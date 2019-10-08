@@ -1,7 +1,9 @@
 FROM alpine:latest
 
-RUN apk add bash
+RUN apk add bash python3 \
+   && mkdir /work
+COPY *.py /work/
 WORKDIR /work
-COPY script.sh .
-CMD bash "/work/script.sh"
+RUN chmod +x test_script.py
+CMD "/work/test_script.py"
 
